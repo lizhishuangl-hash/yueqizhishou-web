@@ -1,215 +1,220 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>乐器助手 TempoMate</title>
-    <meta name="description" content="乐器助手 TempoMate：节拍器、曲谱和跟练音频一体化练习工具。">
-    <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #111827;
-            background: #ffffff;
-            line-height: 1.65;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>乐器助手 TempoMate</title>
+  <meta name="description" content="乐器助手 TempoMate：节拍器、曲谱和跟练音频一体化练习工具。" />
+  <style>
+    :root {
+      --text: #111827;
+      --sub: #374151;
+      --line: #e5e7eb;
+      --card: #fafafa;
+    }
 
-        main {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 56px 20px 40px;
-        }
+    * { box-sizing: border-box; }
 
-        h1 {
-            margin: 0 0 10px;
-            font-size: 40px;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-        }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.65;
+    }
 
-        h2 {
-            margin: 34px 0 10px;
-            font-size: 24px;
-        }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 20px 44px;
+    }
 
-        p {
-            margin: 0;
-            color: #374151;
-        }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 40px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
 
-        ul {
-            margin: 12px 0 0;
-            padding-left: 20px;
-            color: #374151;
-        }
+    h2 {
+      margin: 34px 0 10px;
+      font-size: 24px;
+    }
 
-        li + li {
-            margin-top: 8px;
-        }
+    p {
+      margin: 0;
+      color: var(--sub);
+    }
 
-        .actions {
-            margin-top: 20px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--sub);
+    }
 
-        .carousel {
-            margin-top: 28px;
-        }
+    li + li { margin-top: 8px; }
 
-        .carousel-frame {
-            position: relative;
-            width: fit-content;
-            margin: 0 auto;
-            border: 1px solid #d9dee8;
-            border-radius: 18px;
-            overflow: hidden;
-            background: #000;
-            box-shadow: 0 18px 45px rgba(17, 24, 39, 0.2);
-            transition: transform 0.24s ease, box-shadow 0.24s ease;
-        }
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-        .carousel-frame:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 26px 58px rgba(17, 24, 39, 0.28);
-        }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      color: var(--text);
+      background: #fff;
+    }
 
-        .carousel-frame img {
-            display: block;
-            width: auto;
-            height: auto;
-            max-width: min(100vw - 44px, 1290px);
-            max-height: 86vh;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-        }
+    .btn.primary {
+      background: #111827;
+      border-color: #111827;
+      color: #fff;
+    }
 
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            cursor: pointer;
-            font-size: 18px;
-            line-height: 1;
-        }
+    .carousel {
+      margin-top: 28px;
+    }
 
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
+    /* 不改变截图原始比例，仅在视口不够时等比缩小 */
+    .carousel-frame {
+      position: relative;
+      width: fit-content;
+      margin: 0 auto;
+      border: 1px solid #d9dee8;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 18px 45px rgba(17, 24, 39, 0.2);
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    }
 
-        .carousel-dots {
-            margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-        }
+    .carousel-frame:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 26px 58px rgba(17, 24, 39, 0.28);
+    }
 
-        .carousel-dots button {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            border: none;
-            background: #d1d5db;
-            padding: 0;
-            cursor: pointer;
-        }
+    .carousel-frame img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: min(100vw - 44px, 1290px);
+      max-height: 86vh;
+    }
 
-        .carousel-dots button.active {
-            background: #111827;
-        }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+    }
 
-        .carousel-tip {
-            margin-top: 8px;
-            text-align: center;
-            color: #6b7280;
-            font-size: 12px;
-        }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
 
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid #d1d5db;
-            color: #111827;
-        }
+    .carousel-dots {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
 
-        .btn.primary {
-            background: #111827;
-            border-color: #111827;
-            color: #ffffff;
-        }
+    .carousel-dots button {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      border: none;
+      background: #d1d5db;
+      padding: 0;
+      cursor: pointer;
+    }
 
-        .block {
-            margin-top: 14px;
-            padding: 14px;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            background: #fafafa;
-        }
+    .carousel-dots button.active {
+      background: #111827;
+    }
 
-        .block p + p {
-            margin-top: 8px;
-        }
+    .carousel-tip {
+      margin-top: 8px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 12px;
+    }
 
-        .policy {
-            white-space: pre-wrap;
-            font-size: 14px;
-            line-height: 1.75;
-            color: #374151;
-            max-height: 420px;
-            overflow: auto;
-        }
+    .block {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+    }
 
-        footer {
-            margin-top: 40px;
-            padding-top: 16px;
-            border-top: 1px solid #e5e7eb;
-            color: #6b7280;
-            font-size: 13px;
-        }
-    </style>
+    .block p + p { margin-top: 8px; }
+
+    .policy {
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--sub);
+      max-height: 420px;
+      overflow: auto;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: #6b7280;
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
-    <main>
-        <h1>乐器助手 TempoMate</h1>
-        <p>一款面向日常练习的 iOS 工具，把节拍、曲谱和跟练音频放在同一个流程里。</p>
+  <main>
+    <h1>乐器助手 TempoMate</h1>
+    <p>一款面向日常练习的 iOS 工具，把节拍、曲谱和跟练音频放在同一个流程里。</p>
 
-        <div class="actions">
-            <a class="btn primary" href="#">即将上线 App Store</a>
-            <a class="btn" href="mailto:454203402@qq.com">邮件反馈</a>
-            <a class="btn" href="#privacy-policy">隐私政策</a>
-            <a class="btn" href="#help-support">帮助支持</a>
-        </div>
+    <div class="actions">
+      <a class="btn primary" href="#">即将上线 App Store</a>
+      <a class="btn" href="mailto:454203402@qq.com">邮件反馈</a>
+      <a class="btn" href="#privacy-policy">隐私政策</a>
+      <a class="btn" href="#help-support">帮助支持</a>
+    </div>
 
-        <h2>核心功能</h2>
-        <ul>
-            <li><strong>节拍器：</strong>常用拍号与节奏设置，帮助稳定节奏。</li>
-            <li><strong>曲谱：</strong>导入相册图片并在应用内查看、缩放。</li>
-            <li><strong>跟练音频：</strong>支持循环、变速、变调，适合慢练与分段练习。</li>
-        </ul>
+    <h2>核心功能</h2>
+    <ul>
+      <li><strong>节拍器：</strong>常用拍号与节奏设置，帮助稳定节奏。</li>
+      <li><strong>曲谱：</strong>导入相册图片并在应用内查看、缩放。</li>
+      <li><strong>跟练音频：</strong>支持循环、变速、变调，适合慢练与分段练习。</li>
+    </ul>
 
-        <section class="carousel" aria-label="应用截图轮播">
-            <div class="carousel-frame">
-                <img id="shotImage" alt="乐器助手应用截图">
-                <button class="carousel-btn prev" id="prevBtn" aria-label="上一张">‹</button>
-                <button class="carousel-btn next" id="nextBtn" aria-label="下一张">›</button>
-            </div>
-            <div class="carousel-dots" id="dots"></div>
-            <div class="carousel-tip">自动轮播中 · 鼠标悬停可呈现悬浮效果</div>
-        </section>
+    <section class="carousel" aria-label="应用截图轮播">
+      <div class="carousel-frame">
+        <img id="shotImage" alt="乐器助手应用截图" />
+        <button class="carousel-btn prev" id="prevBtn" aria-label="上一张">‹</button>
+        <button class="carousel-btn next" id="nextBtn" aria-label="下一张">›</button>
+      </div>
+      <div class="carousel-dots" id="dots"></div>
+      <div class="carousel-tip">自动轮播中 · 鼠标悬停可呈现悬浮效果</div>
+    </section>
 
-        <h2 id="privacy-policy">隐私政策（完整）</h2>
-        <div class="block">
-            <div class="policy">隐私政策（中文）
+    <h2 id="privacy-policy">隐私政策（完整）</h2>
+    <div class="block">
+      <div class="policy">隐私政策（中文）
 
 生效日期：2026 年 4 月 8 日
 最近更新：2026 年 4 月 8 日
@@ -316,84 +321,85 @@ We may update this Policy and indicate updates in the App.
 
 11. Contact
 Li Zhishuang (李志双) — 454203402@qq.com</div>
-        </div>
+    </div>
 
-        <h2 id="help-support">帮助支持</h2>
-        <div class="block">
-            <p><strong>常见问题</strong></p>
-            <p>1. 无声音：请检查系统媒体音量与静音状态。</p>
-            <p>2. 曲谱/音频同步：请确认 iCloud 已登录并在应用内开启对应选项。</p>
-            <p>3. 订阅与恢复购买：请在 App 内“订阅与会员”中操作，支付与退款规则以 Apple 为准。</p>
-            <p><strong>联系邮箱：</strong><a href="mailto:454203402@qq.com">454203402@qq.com</a></p>
-        </div>
+    <h2 id="help-support">帮助支持</h2>
+    <div class="block">
+      <p><strong>常见问题</strong></p>
+      <p>1. 无声音：请检查系统媒体音量与静音状态。</p>
+      <p>2. 曲谱/音频同步：请确认 iCloud 已登录并在应用内开启对应选项。</p>
+      <p>3. 订阅与恢复购买：请在 App 内“订阅与会员”中操作，支付与退款规则以 Apple 为准。</p>
+      <p><strong>联系邮箱：</strong><a href="mailto:454203402@qq.com">454203402@qq.com</a></p>
+    </div>
 
-        <footer>© 2026 李志双. All Rights Reserved.</footer>
-    </main>
+    <footer>© 2026 李志双. All Rights Reserved.</footer>
+  </main>
 
-    <script>
-        const screenshots = [
-            "file:///Users/li/Desktop/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87/Simulator%20Screenshot%20-%20iPhone%2016%20Plus%20-%202026-04-09%20at%2020.04.48.png",
-            "file:///Users/li/Desktop/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87/Simulator%20Screenshot%20-%20iPhone%2016%20Plus%20-%202026-04-09%20at%2020.04.53.png",
-            "file:///Users/li/Desktop/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87/Simulator%20Screenshot%20-%20iPhone%2016%20Plus%20-%202026-04-09%20at%2020.04.58.png",
-            "file:///Users/li/Desktop/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87/Simulator%20Screenshot%20-%20iPhone%2016%20Plus%20-%202026-04-09%20at%2020.05.08.png"
-        ];
+  <script>
+    const screenshots = [
+      "./images/20.04.48.png",
+      "./images/20.04.53.png",
+      "./images/20.04.58.png",
+      "./images/20.05.08.png"
+    ];
 
-        const img = document.getElementById("shotImage");
-        const dotsWrap = document.getElementById("dots");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        let index = 0;
-        let timer = null;
+    const img = document.getElementById("shotImage");
+    const dotsWrap = document.getElementById("dots");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    let index = 0;
+    let timer = null;
 
-        function renderDots() {
-            dotsWrap.innerHTML = "";
-            screenshots.forEach((_, i) => {
-                const dot = document.createElement("button");
-                if (i === index) dot.classList.add("active");
-                dot.addEventListener("click", () => {
-                    index = i;
-                    update();
-                    restart();
-                });
-                dotsWrap.appendChild(dot);
-            });
-        }
-
-        function update() {
-            img.src = screenshots[index];
-            renderDots();
-        }
-
-        function next() {
-            index = (index + 1) % screenshots.length;
-            update();
-        }
-
-        function prev() {
-            index = (index - 1 + screenshots.length) % screenshots.length;
-            update();
-        }
-
-        function start() {
-            timer = setInterval(next, 2600);
-        }
-
-        function restart() {
-            if (timer) clearInterval(timer);
-            start();
-        }
-
-        prevBtn.addEventListener("click", () => {
-            prev();
-            restart();
+    function renderDots() {
+      dotsWrap.innerHTML = "";
+      screenshots.forEach((_, i) => {
+        const dot = document.createElement("button");
+        if (i === index) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+          index = i;
+          update();
+          restart();
         });
-        nextBtn.addEventListener("click", () => {
-            next();
-            restart();
-        });
+        dotsWrap.appendChild(dot);
+      });
+    }
 
-        update();
-        start();
-    </script>
+    function update() {
+      img.src = screenshots[index];
+      renderDots();
+    }
+
+    function next() {
+      index = (index + 1) % screenshots.length;
+      update();
+    }
+
+    function prev() {
+      index = (index - 1 + screenshots.length) % screenshots.length;
+      update();
+    }
+
+    function start() {
+      timer = setInterval(next, 2600);
+    }
+
+    function restart() {
+      if (timer) clearInterval(timer);
+      start();
+    }
+
+    prevBtn.addEventListener("click", () => {
+      prev();
+      restart();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      next();
+      restart();
+    });
+
+    update();
+    start();
+  </script>
 </body>
 </html>
