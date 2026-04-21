@@ -52,6 +52,17 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .lang-select {
+            margin-left: auto;
+            padding: 9px 10px;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            background: #fff;
+            color: #111827;
+            font-size: 14px;
         }
 
         .carousel {
@@ -173,22 +184,23 @@
 </head>
 <body>
     <main>
-        <h1>乐器助手 TempoMate</h1>
-        <p>一款面向日常练习的 iOS 工具，把节拍、调音、曲谱和跟练音频放在同一个流程里。</p>
+        <h1 id="title">乐器助手 TempoMate</h1>
+        <p id="subtitle">一款面向日常练习的 iOS 工具，把节拍、调音、曲谱和跟练音频放在同一个流程里。</p>
 
         <div class="actions">
-            <a class="btn primary" href="https://apps.apple.com/app/id6761851427" target="_blank" rel="noopener noreferrer">下载 App</a>
-            <a class="btn" href="mailto:454203402@qq.com">邮件反馈</a>
-            <a class="btn" href="#privacy-policy">隐私政策</a>
-            <a class="btn" href="#help-support">帮助支持</a>
+            <a id="downloadBtn" class="btn primary" href="https://apps.apple.com/app/id6761851427" target="_blank" rel="noopener noreferrer">下载 App</a>
+            <a id="feedbackBtn" class="btn" href="mailto:454203402@qq.com">邮件反馈</a>
+            <a id="privacyBtn" class="btn" href="#privacy-policy">隐私政策</a>
+            <a id="helpBtn" class="btn" href="#help-support">帮助支持</a>
+            <select id="langSelect" class="lang-select" aria-label="Language selector"></select>
         </div>
 
-        <h2>核心功能</h2>
+        <h2 id="featuresTitle">核心功能</h2>
         <ul>
-            <li><strong>节拍器：</strong>常用拍号与节奏设置，帮助稳定节奏。</li>
-            <li><strong>吉他调音器：</strong>通过麦克风采集琴弦声音，在设备本地完成音高识别与调音反馈（可选自动识别弦等偏好设置）。</li>
-            <li><strong>曲谱：</strong>导入相册图片并在应用内查看、缩放。</li>
-            <li><strong>跟练音频：</strong>支持循环、变速、变调，适合慢练与分段练习。</li>
+            <li id="feature1">节拍器：常用拍号与节奏设置，帮助稳定节奏。</li>
+            <li id="feature2">吉他调音器：通过麦克风采集琴弦声音，在设备本地完成音高识别与调音反馈（可选自动识别弦等偏好设置）。</li>
+            <li id="feature3">曲谱：导入相册图片并在应用内查看、缩放。</li>
+            <li id="feature4">跟练音频：支持循环、变速、变调，适合慢练与分段练习。</li>
         </ul>
 
         <section class="carousel" aria-label="应用截图轮播">
@@ -200,125 +212,19 @@
             <div class="carousel-dots" id="dots"></div>
         </section>
 
-        <h2 id="privacy-policy">隐私政策（完整）</h2>
+        <h2 id="privacy-policy">隐私政策</h2>
         <div class="block">
-            <div class="policy">隐私政策（中文）
-
-生效日期：2026 年 4 月 8 日
-最近更新：2026 年 4 月 8 日
-
-「乐器助手」在英文环境下的名称为 TempoMate（以下统称为「本应用」）。感谢您使用本应用。我们重视您的隐私。本政策说明在您使用本应用时，我们如何收集、使用、存储与保护相关信息。若您不同意本政策，请勿使用本应用。
-
-本页面提供中文版与 English 版；若两种语言内容有冲突，以中文版为准。
-
-一、运营者信息
-运营者名称：李志双
-联系方式：454203402@qq.com
-
-二、适用范围
-本政策适用于您通过 Apple 设备下载、安装并使用本应用的情形。本应用主要通过您的设备本地与（由您选择开启的）Apple iCloud 提供服务；本应用当前版本不要求您注册我们提供的独立账号。
-
-三、我们处理的信息及场景说明
-1）您主动提供或生成的内容与数据（主要存储在您的设备本地）
-- 曲谱相关：您从相册选取或导入的图片类曲谱数据、您编辑的标题等信息。
-- 练习音频：您从系统文件选择等方式导入的音频文件副本（保存于应用沙盒或您启用的 iCloud 目录）。
-- 节拍与预设：节拍器参数、命名速度预设等数据。
-- 应用偏好与练习相关配置：例如练习提醒的开关与提醒时间（若您开启）、语言与外观、启动默认页面等，以及节拍器等功能相关设置；该类数据主要存于设备本地。当前版本不提供「每日打卡」功能，亦不通过 Core Data 或类似机制持久化存储您的「练习历史/练习记录」类数据。
-
-2）相册/照片相关权限（仅在您操作时触发）
-- 从相册选择图片用于添加曲谱：通过系统提供的照片选择能力处理；我们不会获取您相册的全部内容，具体范围以系统授权与您的选择为准。
-- 保存图片到系统相册（如您使用导出/保存功能）：仅在您确认操作时，依系统机制请求所需权限并完成保存。
-
-3）通知
-若您开启练习提醒等本地通知，我们仅在您的设备上依据您设置的时间进行调度；我们不会因此获取您的通讯录，亦不会将通知正文或由此推断的个人习惯上传至我们的服务器（除非未来版本另有说明并经您同意）。
-
-4）会员订阅/购买
-订阅、购买或恢复购买由 Apple App Store（StoreKit）处理。我们会从 Apple 收到与交易/订阅状态相关的必要信息（如是否处于已订阅状态），以便解锁功能。付款细节主要由 Apple 处理，请参阅 Apple 的隐私政策。
-
-5）Apple iCloud（由您自行开启）
-若您在应用内开启相应同步选项，部分数据可能同步至与您的 Apple ID 关联的 iCloud 存储。该类数据由 Apple 提供基础设施处理与保护，并受 Apple iCloud 条款与隐私政策约束；其可能涉及跨境存储与处理，具体以 Apple 说明为准。
-
-6）诊断、日志与崩溃（如未来启用将更新本政策）
-当前版本未集成面向广告投放的第三方追踪 SDK，也不以出售个人数据为目的。若未来加入匿名化统计或崩溃上报，我们将在本政策中补充说明数据类型、处理方与退出方式。
-
-四、使用目的
-在您使用本应用提供功能的必要范围内，我们使用相关信息用于：提供与维护功能、履行会员权益判断（通过 Apple 返回的订阅状态）、在您授权下发送本地通知、保障应用安全稳定运行，以及遵守法律法规要求。
-
-五、共享与委托处理
-我们不将您的个人数据出售给他人。我们可能仅在以下情形涉及第三方：Apple（App Store 交易与订阅、iCloud 同步、系统级照片选择能力等）；以及法律法规或监管机关依法要求。
-
-六、留存期限
-存储于您设备或您 iCloud 容器中的内容主要由您通过删除应用数据、删除应用内条目、关闭同步或删除应用等方式控制；我们会在实现本政策所述目的所需期限内保留信息，法律法规另有规定的除外。
-
-七、您的权利
-在适用法律允许的范围内，您可就个人信息行使访问、更正、删除、限制处理、投诉等权利。由于本应用以本地/iCloud 为主，您通常可直接在应用内删除相应内容；如需协助请通过 454203402@qq.com 联系我们。
-
-八、未成年人
-若您为未成年人，请在监护人指导下阅读本政策并征得监护人同意后使用。
-
-九、跨境传输
-通过 Apple 服务（包括 App Store、iCloud 等）处理的数据，可能由 Apple 按其全球基础设施处理。您使用相关功能即表示理解该等处理可能涉及跨境。
-
-十、政策更新
-我们可能更新本政策，并在应用内展示或提示；您继续使用即视为接受更新后的政策。
-
-十一、联系我们
-李志双，454203402@qq.com
-
-Privacy Policy (English)
-Effective date: April 8, 2026
-Last updated: April 8, 2026
-
-TempoMate is the English name of the app also presented in Chinese as 「乐器助手」. This page includes both Chinese and English. If the two versions conflict, the Chinese version prevails.
-
-1. Operator / data controller
-Name: Li Zhishuang (李志双)
-Contact: 454203402@qq.com
-
-2. Scope
-This Policy applies when you download, install, and use the App on Apple devices. The App primarily uses local storage on your device and, if you enable it, Apple iCloud.
-
-3. Information we process
-- Content/data you create or import (mostly local): sheet images, titles, audio copies, metronome settings and preferences.
-- The current version does not offer daily check-in and does not persist a separate practice history database via Core Data or equivalent.
-- Photos/media: system picker and save actions only when you confirm.
-- Notifications: local scheduling on device.
-- Purchases: handled by Apple App Store (StoreKit).
-- iCloud sync (optional): subject to Apple terms/privacy.
-
-4. Purposes
-Provide features, validate entitlements, local notifications, security/stability and legal compliance.
-
-5. Sharing
-We do not sell personal information. We rely on Apple where necessary and on lawful requests from authorities.
-
-6. Retention
-You control much of the data on device/in your iCloud container.
-
-7. Your rights
-Contact us at 454203402@qq.com.
-
-8. Children
-Minors should use the App with parental guidance and consent.
-
-9. International transfers
-Apple services may process data globally as described by Apple.
-
-10. Changes
-We may update this Policy and indicate updates in the App.
-
-11. Contact
-Li Zhishuang (李志双) — 454203402@qq.com</div>
+            <div class="policy" id="policyText"></div>
         </div>
 
         <h2 id="help-support">帮助支持</h2>
         <div class="block">
-            <p><strong>常见问题</strong></p>
-            <p>1. 无声音：请检查系统媒体音量与静音状态。</p>
-            <p>2. 曲谱/音频同步：请确认 iCloud 已登录并在应用内开启对应选项。</p>
-            <p>3. 订阅与恢复购买：请在 App 内“订阅与会员”中操作，支付与退款规则以 Apple 为准。</p>
-            <p>4. 吉他调音器：首次使用需在系统弹窗中允许麦克风权限；请在相对安静的环境下单弦弹奏，便于识别。若需调整权限，可到 iOS「设置 → 隐私与安全性 → 麦克风」中开启或关闭本应用。</p>
-            <p><strong>联系邮箱：</strong><a href="mailto:454203402@qq.com">454203402@qq.com</a></p>
+            <p><strong id="faqTitle">常见问题</strong></p>
+            <p id="faq1">1. 无声音：请检查系统媒体音量与静音状态。</p>
+            <p id="faq2">2. 曲谱/音频同步：请确认 iCloud 已登录并在应用内开启对应选项。</p>
+            <p id="faq3">3. 订阅与恢复购买：请在 App 内“订阅与会员”中操作，支付与退款规则以 Apple 为准。</p>
+            <p id="faq4">4. 吉他调音器：首次使用需在系统弹窗中允许麦克风权限；请在相对安静的环境下单弦弹奏，便于识别。若需调整权限，可到 iOS「设置 → 隐私与安全性 → 麦克风」中开启或关闭本应用。</p>
+            <p><strong id="contactLabel">联系邮箱：</strong><a href="mailto:454203402@qq.com">454203402@qq.com</a></p>
         </div>
 
         <footer>© 2026 李志双. All Rights Reserved.</footer>
@@ -332,13 +238,978 @@ Li Zhishuang (李志双) — 454203402@qq.com</div>
             "./images/400x800bb (3).webp",
             "./images/400x800bb (4).webp"
         ];
+        const appStoreUrl = "https://apps.apple.com/app/id6761851427";
+        const languages = {
+            zh: "简体中文",
+            "zh-TW": "繁體中文",
+            en: "English",
+            de: "Deutsch",
+            ru: "Русский",
+            fr: "Français",
+            ko: "한국어",
+            pt: "Português",
+            ja: "日本語",
+            tr: "Türkçe",
+            es: "Español",
+            it: "Italiano"
+        };
+        const policyFullByLang = {
+            zh: `隐私政策（中文）
+生效日期：2026 年 4 月 8 日
+最近更新：2026 年 4 月 8 日
+
+一、运营者信息
+运营者：李志双
+联系方式：454203402@qq.com
+
+二、适用范围
+本政策适用于你在 Apple 设备上下载、安装和使用「乐器助手 TempoMate」。
+
+三、我们处理的信息
+1）你主动导入或创建的数据（主要保存在本地）：
+- 曲谱图片与标题
+- 练习音频文件
+- 节拍器参数与应用偏好
+2）系统权限相关：
+- 相册/文件访问（仅在你主动操作时）
+- 麦克风权限（用于调音器）
+- 本地通知（用于练习提醒）
+3）购买与订阅：
+- 由 Apple App Store（StoreKit）处理，我们仅接收必要订阅状态用于功能解锁。
+4）iCloud 同步（可选）：
+- 仅在你开启时同步相关数据到你的 Apple 账户。
+
+四、使用目的
+用于提供核心功能、识别会员权益、执行你设置的本地提醒、保障应用稳定与安全、以及履行法律义务。
+
+五、共享与披露
+我们不会出售你的个人信息。仅可能在以下情形涉及第三方：Apple 服务链路（App Store / iCloud / 系统能力）或法律法规要求。
+
+六、留存与删除
+数据主要由你在设备或 iCloud 中自行管理。你可删除条目、关闭同步或卸载应用来移除数据。
+
+七、你的权利
+在适用法律下，你可请求访问、更正、删除或限制处理。你也可以通过 454203402@qq.com 联系我们。
+
+八、未成年人
+未成年人请在监护人同意与指导下使用本应用。
+
+九、跨境传输
+通过 Apple 全球基础设施处理的数据可能涉及跨境传输，具体以 Apple 政策为准。
+
+十、政策更新
+本政策可能更新；更新后会在应用内或页面中提示。
+
+十一、联系我们
+李志双
+454203402@qq.com`,
+            "zh-TW": `隱私政策（繁體中文）
+生效日期：2026 年 4 月 8 日
+最近更新：2026 年 4 月 8 日
+
+一、營運者資訊
+營運者：李志雙
+聯絡方式：454203402@qq.com
+
+二、適用範圍
+本政策適用於你在 Apple 裝置上下載、安裝與使用「樂器助手 TempoMate」。
+
+三、我們處理的資訊
+1）你主動匯入或建立的資料（主要儲存在本地）：
+- 曲譜圖片與標題
+- 練習音訊檔案
+- 節拍器參數與應用偏好
+2）系統權限相關：
+- 相簿/檔案存取（僅在你主動操作時）
+- 麥克風權限（用於調音器）
+- 本地通知（用於練習提醒）
+3）購買與訂閱：
+- 由 Apple App Store（StoreKit）處理，我們僅接收必要訂閱狀態以解鎖功能。
+4）iCloud 同步（可選）：
+- 僅在你開啟時，同步相關資料到你的 Apple 帳號。
+
+四、使用目的
+用於提供核心功能、識別會員權益、執行你設定的本地提醒、保障應用穩定與安全，以及履行法律義務。
+
+五、共享與揭露
+我們不會出售你的個人資訊。僅可能在以下情形涉及第三方：Apple 服務鏈路（App Store / iCloud / 系統能力）或法律法規要求。
+
+六、保存與刪除
+資料主要由你在裝置或 iCloud 中自行管理。你可刪除條目、關閉同步或移除應用來刪除資料。
+
+七、你的權利
+在適用法律下，你可請求存取、更正、刪除或限制處理，也可透過 454203402@qq.com 聯絡我們。
+
+八、未成年人
+未成年人請在監護人同意與指導下使用本應用。
+
+九、跨境傳輸
+透過 Apple 全球基礎設施處理的資料可能涉及跨境傳輸，詳見 Apple 政策。
+
+十、政策更新
+本政策可能更新；更新後會在應用內或頁面提示。
+
+十一、聯絡我們
+李志雙
+454203402@qq.com`,
+            en: `Privacy Policy (English)
+Effective date: April 8, 2026
+Last updated: April 8, 2026
+
+1. Operator
+Operator: Li Zhishuang
+Contact: 454203402@qq.com
+
+2. Scope
+This policy applies when you download, install, and use TempoMate on Apple devices.
+
+3. Information We Process
+1) Data you create/import (mainly stored locally):
+- Sheet images and titles
+- Practice audio files
+- Metronome settings and app preferences
+2) Permissions:
+- Photos/files access (only when you choose to import/export)
+- Microphone access (for tuner)
+- Local notifications (for practice reminders)
+3) Purchases/subscriptions:
+- Processed by Apple App Store (StoreKit); we only receive entitlement status needed to unlock features.
+4) iCloud sync (optional):
+- Used only when you enable sync in the app.
+
+4. Purposes
+To provide core features, verify subscription entitlement, schedule local reminders, maintain app security/stability, and comply with legal obligations.
+
+5. Sharing
+We do not sell personal data. Data may involve Apple services (App Store/iCloud/system APIs) or lawful disclosures required by authorities.
+
+6. Retention and Deletion
+Most data is controlled by you on device or iCloud. You can delete items, disable sync, or uninstall the app.
+
+7. Your Rights
+Subject to applicable law, you may request access, correction, deletion, or restriction. Contact us at 454203402@qq.com.
+
+8. Children
+Minors should use the app under guardian consent and guidance.
+
+9. International Transfers
+Data processed through Apple infrastructure may involve cross-border transfer as described by Apple.
+
+10. Policy Updates
+We may update this policy and provide notice in the app or on this page.
+
+11. Contact
+Li Zhishuang
+454203402@qq.com`,
+            de: `Datenschutzerklaerung (Deutsch)
+Inkrafttreten: 08.04.2026
+Letzte Aktualisierung: 08.04.2026
+
+1. Betreiber
+Betreiber: Li Zhishuang
+Kontakt: 454203402@qq.com
+
+2. Geltungsbereich
+Diese Richtlinie gilt fuer die Nutzung von TempoMate auf Apple-Geraeten.
+
+3. Verarbeitete Daten
+1) Von dir erstellte/importierte Daten (hauptsaechlich lokal):
+- Notenbilder und Titel
+- Uebungs-Audiodateien
+- Metronom- und App-Einstellungen
+2) Berechtigungen:
+- Fotos/Dateien (nur bei deiner Aktion)
+- Mikrofon (fuer Stimmgeraet)
+- Lokale Mitteilungen (Uebungserinnerungen)
+3) Kaeufe/Abos:
+- Ueber Apple App Store (StoreKit); wir erhalten nur den noetigen Abo-Status.
+4) iCloud-Sync (optional):
+- Nur bei Aktivierung durch dich.
+
+4. Zwecke
+Bereitstellung der Funktionen, Abo-Pruefung, lokale Erinnerungen, Sicherheit/Stabilitaet und rechtliche Pflichten.
+
+5. Weitergabe
+Kein Verkauf personenbezogener Daten. Beteiligte Dritte: Apple-Dienste oder gesetzlich verpflichtende Offenlegung.
+
+6. Speicherung und Loeschung
+Daten werden ueberwiegend von dir auf Geraet/iCloud verwaltet. Loeschen durch Entfernen von Inhalten, Deaktivieren von Sync oder Deinstallation.
+
+7. Rechte
+Nach geltendem Recht kannst du Auskunft, Berichtigung, Loeschung oder Einschraenkung verlangen. Kontakt: 454203402@qq.com.
+
+8. Minderjaehrige
+Nutzung durch Minderjaehrige nur mit Zustimmung und Begleitung der Erziehungsberechtigten.
+
+9. Internationale Uebermittlung
+Durch Apple-Infrastruktur kann grenzueberschreitende Verarbeitung erfolgen.
+
+10. Aktualisierungen
+Diese Richtlinie kann aktualisiert werden; Hinweise erfolgen in der App oder auf dieser Seite.
+
+11. Kontakt
+Li Zhishuang
+454203402@qq.com`,
+            ru: `Политика конфиденциальности (Русский)
+Дата вступления в силу: 08.04.2026
+Последнее обновление: 08.04.2026
+
+1. Оператор
+Оператор: Li Zhishuang
+Контакт: 454203402@qq.com
+
+2. Сфера действия
+Политика применяется при использовании TempoMate на устройствах Apple.
+
+3. Какие данные обрабатываются
+1) Данные, которые вы создаете/импортируете (в основном локально):
+- изображения партитур и названия
+- аудиофайлы для практики
+- настройки метронома и приложения
+2) Разрешения:
+- доступ к фото/файлам (только по вашему действию)
+- доступ к микрофону (для тюнера)
+- локальные уведомления (напоминания о практике)
+3) Покупки и подписки:
+- обрабатываются через Apple App Store (StoreKit); мы получаем только статус подписки для разблокировки функций.
+4) Синхронизация iCloud (по желанию):
+- используется только при включении вами.
+
+4. Цели обработки
+Предоставление функций, проверка подписки, локальные напоминания, безопасность/стабильность и соблюдение закона.
+
+5. Передача данных
+Мы не продаем персональные данные. Возможна передача в рамках сервисов Apple или по законному требованию органов.
+
+6. Хранение и удаление
+Большинство данных контролируется вами на устройстве/iCloud. Вы можете удалить записи, отключить синхронизацию или удалить приложение.
+
+7. Ваши права
+В рамках применимого права вы можете запросить доступ, исправление, удаление или ограничение обработки. Контакт: 454203402@qq.com.
+
+8. Несовершеннолетние
+Использование несовершеннолетними допускается с согласием и под контролем законного представителя.
+
+9. Трансграничная передача
+Обработка через инфраструктуру Apple может включать трансграничную передачу.
+
+10. Обновления политики
+Мы можем обновлять политику и уведомлять в приложении или на этой странице.
+
+11. Контакты
+Li Zhishuang
+454203402@qq.com`,
+            fr: `Politique de confidentialite (Francais)
+Date d'effet : 08/04/2026
+Derniere mise a jour : 08/04/2026
+
+1. Operateur
+Operateur : Li Zhishuang
+Contact : 454203402@qq.com
+
+2. Portee
+Cette politique s'applique a l'utilisation de TempoMate sur les appareils Apple.
+
+3. Donnees traitees
+1) Donnees creees/importees par vous (principalement en local) :
+- images de partitions et titres
+- fichiers audio d'exercice
+- reglages metronome et preferences
+2) Autorisations :
+- acces photos/fichiers (uniquement a votre demande)
+- acces micro (pour l'accordeur)
+- notifications locales (rappels de pratique)
+3) Achats/abonnements :
+- traites par Apple App Store (StoreKit) ; nous recevons uniquement l'etat d'abonnement necessaire.
+4) Synchronisation iCloud (optionnelle) :
+- utilisee seulement si vous l'activez.
+
+4. Finalites
+Fournir les fonctions, verifier les droits d'abonnement, executer les rappels locaux, assurer securite/stabilite et conformite legale.
+
+5. Partage
+Nous ne vendons pas vos donnees personnelles. Les donnees peuvent transiter via les services Apple ou etre divulguees si la loi l'exige.
+
+6. Conservation et suppression
+La plupart des donnees sont sous votre controle sur l'appareil/iCloud. Vous pouvez supprimer des elements, desactiver la sync ou desinstaller l'app.
+
+7. Vos droits
+Selon la loi applicable, vous pouvez demander acces, rectification, suppression ou limitation. Contact : 454203402@qq.com.
+
+8. Mineurs
+Les mineurs doivent utiliser l'app avec l'accord et l'accompagnement d'un responsable legal.
+
+9. Transferts internationaux
+Le traitement via l'infrastructure Apple peut impliquer des transferts internationaux.
+
+10. Mises a jour
+Cette politique peut etre mise a jour ; un avis sera fourni dans l'app ou sur cette page.
+
+11. Contact
+Li Zhishuang
+454203402@qq.com`,
+            ko: `개인정보 처리방침 (한국어)
+시행일: 2026-04-08
+최종 업데이트: 2026-04-08
+
+1. 운영자
+운영자: Li Zhishuang
+문의: 454203402@qq.com
+
+2. 적용 범위
+본 방침은 Apple 기기에서 TempoMate를 설치/이용할 때 적용됩니다.
+
+3. 처리되는 정보
+1) 사용자가 생성/가져오는 데이터(주로 로컬 저장):
+- 악보 이미지 및 제목
+- 연습 오디오 파일
+- 메트로놈/앱 설정
+2) 권한:
+- 사진/파일 접근(사용자 요청 시)
+- 마이크 접근(튜너 기능)
+- 로컬 알림(연습 리마인더)
+3) 구매/구독:
+- Apple App Store(StoreKit)에서 처리되며, 기능 해제를 위한 구독 상태만 수신합니다.
+4) iCloud 동기화(선택):
+- 사용자가 켠 경우에만 사용됩니다.
+
+4. 처리 목적
+핵심 기능 제공, 구독 권한 확인, 로컬 알림 실행, 보안/안정성 유지, 법적 의무 이행.
+
+5. 공유
+개인정보를 판매하지 않습니다. Apple 서비스 연동 또는 법령상 요구되는 경우에만 제3자와 관련될 수 있습니다.
+
+6. 보관 및 삭제
+대부분의 데이터는 기기/iCloud에서 사용자가 직접 관리합니다. 항목 삭제, 동기화 해제, 앱 삭제가 가능합니다.
+
+7. 이용자 권리
+관련 법령에 따라 열람, 정정, 삭제, 처리 제한을 요청할 수 있습니다. 문의: 454203402@qq.com.
+
+8. 아동
+미성년자는 보호자 동의와 지도 하에 이용해야 합니다.
+
+9. 국외 이전
+Apple 인프라를 통한 처리에는 국외 이전이 포함될 수 있습니다.
+
+10. 방침 변경
+본 방침은 업데이트될 수 있으며, 앱 또는 본 페이지에서 고지됩니다.
+
+11. 연락처
+Li Zhishuang
+454203402@qq.com`,
+            pt: `Politica de Privacidade (Portugues)
+Vigencia: 08/04/2026
+Ultima atualizacao: 08/04/2026
+
+1. Operador
+Operador: Li Zhishuang
+Contato: 454203402@qq.com
+
+2. Escopo
+Esta politica se aplica ao uso do TempoMate em dispositivos Apple.
+
+3. Dados processados
+1) Dados criados/importados por voce (principalmente locais):
+- imagens de partituras e titulos
+- arquivos de audio de pratica
+- configuracoes de metronomo e preferencias
+2) Permissoes:
+- acesso a fotos/arquivos (somente quando voce solicita)
+- acesso ao microfone (afinador)
+- notificacoes locais (lembretes de pratica)
+3) Compras/assinaturas:
+- processadas pela Apple App Store (StoreKit); recebemos apenas o status de assinatura necessario.
+4) Sincronizacao iCloud (opcional):
+- usada apenas quando voce ativa.
+
+4. Finalidades
+Fornecer funcionalidades, validar assinatura, executar lembretes locais, manter seguranca/estabilidade e cumprir obrigacoes legais.
+
+5. Compartilhamento
+Nao vendemos dados pessoais. Pode haver envolvimento de servicos Apple ou divulgacao exigida por lei.
+
+6. Retencao e exclusao
+A maior parte dos dados e controlada por voce no dispositivo/iCloud. Voce pode excluir itens, desativar sync ou desinstalar o app.
+
+7. Seus direitos
+Conforme a lei aplicavel, voce pode solicitar acesso, correcao, exclusao ou restricao de tratamento. Contato: 454203402@qq.com.
+
+8. Menores
+Menores devem usar o app com consentimento e supervisao de responsavel.
+
+9. Transferencias internacionais
+Processamento via infraestrutura da Apple pode envolver transferencia internacional.
+
+10. Atualizacoes
+Esta politica pode ser atualizada; avisos serao exibidos no app ou nesta pagina.
+
+11. Contato
+Li Zhishuang
+454203402@qq.com`,
+            ja: `プライバシーポリシー（日本語）
+発効日: 2026-04-08
+最終更新日: 2026-04-08
+
+1. 事業者情報
+事業者: Li Zhishuang
+連絡先: 454203402@qq.com
+
+2. 適用範囲
+本ポリシーは、Apple デバイスで TempoMate を利用する場合に適用されます。
+
+3. 取り扱う情報
+1) ユーザーが作成/取り込みするデータ（主に端末内保存）:
+- 譜面画像とタイトル
+- 練習用オーディオファイル
+- メトロノーム設定とアプリ設定
+2) 権限:
+- 写真/ファイルアクセス（ユーザー操作時のみ）
+- マイクアクセス（チューナー機能）
+- ローカル通知（練習リマインダー）
+3) 購入/サブスクリプション:
+- Apple App Store（StoreKit）で処理され、当方は機能解放に必要な購読状態のみ受け取ります。
+4) iCloud 同期（任意）:
+- ユーザーが有効化した場合のみ使用します。
+
+4. 利用目的
+機能提供、購読状態確認、ローカル通知実行、セキュリティ/安定性維持、法令対応のため。
+
+5. 共有
+個人情報の販売は行いません。Apple サービス連携または法令に基づく開示の場合のみ第三者が関与します。
+
+6. 保存と削除
+多くのデータは端末/iCloud 上でユーザーが管理できます。項目削除、同期オフ、アプリ削除が可能です。
+
+7. ユーザーの権利
+適用法令の範囲で、開示・訂正・削除・処理制限を求めることができます。連絡先: 454203402@qq.com。
+
+8. 未成年者
+未成年者は保護者の同意と監督のもとで利用してください。
+
+9. 国際移転
+Apple インフラ経由の処理では、国際的なデータ移転が含まれる場合があります。
+
+10. ポリシー更新
+本ポリシーは更新される場合があり、アプリまたは本ページで通知します。
+
+11. お問い合わせ
+Li Zhishuang
+454203402@qq.com`,
+            tr: `Gizlilik Politikasi (Turkce)
+Yururluk tarihi: 08.04.2026
+Son guncelleme: 08.04.2026
+
+1. Isletmeci
+Isletmeci: Li Zhishuang
+Iletisim: 454203402@qq.com
+
+2. Kapsam
+Bu politika, TempoMate uygulamasinin Apple cihazlarda kullanimi icin gecerlidir.
+
+3. Islenen veriler
+1) Kullanici tarafindan olusturulan/ice aktarilan veriler (agirlikla yerel):
+- nota gorselleri ve basliklar
+- pratik ses dosyalari
+- metronom ve uygulama tercihleri
+2) Izinler:
+- fotograf/dosya erisimi (yalnizca kullanici islemiyle)
+- mikrofon erisimi (akort ozelligi)
+- yerel bildirimler (calisma hatirlaticisi)
+3) Satin alma/abonelik:
+- Apple App Store (StoreKit) uzerinden islenir; yalnizca ozellik acma icin gereken abonelik durumu alinir.
+4) iCloud senkronizasyonu (istege bagli):
+- sadece siz etkinlestirdiginizde kullanilir.
+
+4. Amaclar
+Temel ozellikleri sunmak, abonelik dogrulamak, yerel hatirlaticilar calistirmak, guvenlik/kararlilik saglamak ve yasal yukumlulukleri yerine getirmek.
+
+5. Paylasim
+Kisisel veriler satilmaz. Apple hizmetleriyle teknik isleme veya yasal zorunluluk halinde paylasim olabilir.
+
+6. Saklama ve silme
+Verilerin cogunu cihaz/iCloud uzerinde siz yonetirsiniz. Kayit silme, senkron kapatma veya uygulama kaldirma mumkundur.
+
+7. Haklariniz
+Uygulanabilir hukuka gore erisim, duzeltme, silme veya islemeyi kisitlama talep edebilirsiniz. Iletisim: 454203402@qq.com.
+
+8. Cocuklar
+Reşit olmayan kullanicilar uygulamayi veli onayi ve rehberligiyle kullanmalidir.
+
+9. Sinir otesi aktarim
+Apple altyapisi uzerinden isleme, ulkeler arasi veri aktarimi icerebilir.
+
+10. Politika guncellemeleri
+Bu politika guncellenebilir; bildirim uygulamada veya bu sayfada yapilir.
+
+11. Iletisim
+Li Zhishuang
+454203402@qq.com`,
+            es: `Politica de Privacidad (Espanol)
+Fecha de entrada en vigor: 08/04/2026
+Ultima actualizacion: 08/04/2026
+
+1. Operador
+Operador: Li Zhishuang
+Contacto: 454203402@qq.com
+
+2. Alcance
+Esta politica se aplica al uso de TempoMate en dispositivos Apple.
+
+3. Datos tratados
+1) Datos creados/importados por ti (principalmente locales):
+- imagenes de partituras y titulos
+- archivos de audio de practica
+- ajustes de metronomo y preferencias
+2) Permisos:
+- acceso a fotos/archivos (solo cuando lo solicitas)
+- acceso al microfono (afinador)
+- notificaciones locales (recordatorios)
+3) Compras/suscripciones:
+- procesadas por Apple App Store (StoreKit); solo recibimos el estado de suscripcion necesario.
+4) Sincronizacion iCloud (opcional):
+- se usa solo cuando la activas.
+
+4. Finalidades
+Prestar funciones, validar suscripcion, ejecutar recordatorios locales, mantener seguridad/estabilidad y cumplir obligaciones legales.
+
+5. Comparticion
+No vendemos datos personales. Puede intervenir Apple o haber divulgacion cuando la ley lo exija.
+
+6. Conservacion y eliminacion
+La mayoria de los datos los controlas en tu dispositivo/iCloud. Puedes borrar elementos, desactivar sync o desinstalar la app.
+
+7. Tus derechos
+Segun la ley aplicable, puedes solicitar acceso, rectificacion, eliminacion o limitacion. Contacto: 454203402@qq.com.
+
+8. Menores
+Los menores deben usar la app con consentimiento y supervision de su tutor legal.
+
+9. Transferencias internacionales
+El procesamiento mediante infraestructura de Apple puede implicar transferencias internacionales.
+
+10. Actualizaciones
+Podemos actualizar esta politica y avisar en la app o en esta pagina.
+
+11. Contacto
+Li Zhishuang
+454203402@qq.com`,
+            it: `Informativa sulla Privacy (Italiano)
+Data di efficacia: 08/04/2026
+Ultimo aggiornamento: 08/04/2026
+
+1. Titolare
+Titolare: Li Zhishuang
+Contatto: 454203402@qq.com
+
+2. Ambito
+Questa informativa si applica all'uso di TempoMate su dispositivi Apple.
+
+3. Dati trattati
+1) Dati creati/importati dall'utente (principalmente locali):
+- immagini spartiti e titoli
+- file audio di pratica
+- impostazioni metronomo e preferenze app
+2) Permessi:
+- accesso a foto/file (solo su azione utente)
+- accesso al microfono (accordatore)
+- notifiche locali (promemoria pratica)
+3) Acquisti/abbonamenti:
+- gestiti da Apple App Store (StoreKit); riceviamo solo lo stato di abbonamento necessario.
+4) Sincronizzazione iCloud (opzionale):
+- usata solo se abilitata dall'utente.
+
+4. Finalita
+Fornire funzioni, verificare abbonamento, eseguire promemoria locali, mantenere sicurezza/stabilita e adempiere obblighi legali.
+
+5. Condivisione
+Non vendiamo dati personali. Possono essere coinvolti servizi Apple o divulgazioni richieste dalla legge.
+
+6. Conservazione e cancellazione
+La maggior parte dei dati e gestita dall'utente su dispositivo/iCloud. Puoi eliminare elementi, disattivare sync o disinstallare l'app.
+
+7. Diritti
+Secondo la legge applicabile puoi richiedere accesso, rettifica, cancellazione o limitazione. Contatto: 454203402@qq.com.
+
+8. Minori
+I minori devono usare l'app con consenso e supervisione del tutore.
+
+9. Trasferimenti internazionali
+Il trattamento tramite infrastruttura Apple puo comportare trasferimenti internazionali.
+
+10. Aggiornamenti
+Questa informativa puo essere aggiornata; avvisi saranno mostrati nell'app o in questa pagina.
+
+11. Contatti
+Li Zhishuang
+454203402@qq.com`
+        };
+        const messages = {
+            zh: {
+                title: "乐器助手 TempoMate",
+                subtitle: "一款面向日常练习的 iOS 工具，把节拍、调音、曲谱和跟练音频放在同一个流程里。",
+                downloadBtn: "下载 App",
+                feedbackBtn: "邮件反馈",
+                privacyBtn: "隐私政策",
+                helpBtn: "帮助支持",
+                featuresTitle: "核心功能",
+                feature1: "节拍器：常用拍号与节奏设置，帮助稳定节奏。",
+                feature2: "吉他调音器：通过麦克风采集琴弦声音，在设备本地完成音高识别与调音反馈（可选自动识别弦等偏好设置）。",
+                feature3: "曲谱：导入相册图片并在应用内查看、缩放。",
+                feature4: "跟练音频：支持循环、变速、变调，适合慢练与分段练习。",
+                privacyTitle: "隐私政策",
+                policyText: "我们重视你的隐私。完整隐私政策请查看：",
+                helpTitle: "帮助支持",
+                faqTitle: "常见问题",
+                faq1: "1. 无声音：请检查系统媒体音量与静音状态。",
+                faq2: "2. 曲谱/音频同步：请确认 iCloud 已登录并在应用内开启对应选项。",
+                faq3: "3. 订阅与恢复购买：请在 App 内“订阅与会员”中操作，支付与退款规则以 Apple 为准。",
+                faq4: "4. 吉他调音器：首次使用需在系统弹窗中允许麦克风权限；请在相对安静的环境下单弦弹奏，便于识别。若需调整权限，可到 iOS「设置 → 隐私与安全性 → 麦克风」中开启或关闭本应用。",
+                contactLabel: "联系邮箱："
+            },
+            "zh-TW": {
+                title: "樂器助手 TempoMate",
+                subtitle: "一款面向日常練習的 iOS 工具，把節拍、調音、曲譜和跟練音訊放在同一個流程裡。",
+                downloadBtn: "下載 App",
+                feedbackBtn: "郵件回饋",
+                privacyBtn: "隱私政策",
+                helpBtn: "幫助支援",
+                featuresTitle: "核心功能",
+                feature1: "節拍器：常用拍號與節奏設定，幫助穩定節奏。",
+                feature2: "吉他調音器：透過麥克風採集琴弦聲音，在裝置本地完成音高識別與調音回饋（可選自動識別弦等偏好設定）。",
+                feature3: "曲譜：匯入相簿圖片並在應用內查看、縮放。",
+                feature4: "跟練音訊：支援循環、變速、變調，適合慢練與分段練習。",
+                privacyTitle: "隱私政策",
+                policyText: "我們重視你的隱私。完整隱私政策請查看：",
+                helpTitle: "幫助支援",
+                faqTitle: "常見問題",
+                faq1: "1. 無聲音：請檢查系統媒體音量與靜音狀態。",
+                faq2: "2. 曲譜/音訊同步：請確認 iCloud 已登入並在應用內開啟對應選項。",
+                faq3: "3. 訂閱與恢復購買：請在 App 內「訂閱與會員」中操作，支付與退款規則以 Apple 為準。",
+                faq4: "4. 吉他調音器：首次使用需在系統彈窗中允許麥克風權限；請在相對安靜的環境下單弦彈奏，便於識別。若需調整權限，可到 iOS「設定 → 隱私權與安全性 → 麥克風」中開啟或關閉本應用。",
+                contactLabel: "聯絡信箱："
+            },
+            en: {
+                title: "TempoMate",
+                subtitle: "An iOS practice tool that combines metronome, tuner, sheet music, and practice audio in one flow.",
+                downloadBtn: "Download App",
+                feedbackBtn: "Email Feedback",
+                privacyBtn: "Privacy Policy",
+                helpBtn: "Help & Support",
+                featuresTitle: "Core Features",
+                feature1: "Metronome: common time signatures and BPM settings to keep steady rhythm.",
+                feature2: "Guitar Tuner: detects pitch via microphone and provides on-device tuning feedback.",
+                feature3: "Sheet Music: import photos and view/zoom inside the app.",
+                feature4: "Practice Audio: loop, speed change, and key change for focused training.",
+                privacyTitle: "Privacy Policy",
+                policyText: "We value your privacy. Full policy:",
+                helpTitle: "Help & Support",
+                faqTitle: "FAQ",
+                faq1: "1. No sound: check media volume and silent mode.",
+                faq2: "2. Sheet/audio sync: sign in to iCloud and enable sync in the app.",
+                faq3: "3. Subscription/restore: manage in the in-app membership section.",
+                faq4: "4. Guitar tuner: allow microphone access and pluck one string at a time in a quiet environment.",
+                contactLabel: "Contact Email:"
+            },
+            de: {
+                title: "乐器助手 TempoMate",
+                subtitle: "Ein iOS-Tool fuer das taegliche Ueben mit Metronom, Tuner, Noten und Uebungs-Audio in einem Ablauf.",
+                downloadBtn: "App laden",
+                feedbackBtn: "E-Mail Feedback",
+                privacyBtn: "Datenschutz",
+                helpBtn: "Hilfe",
+                featuresTitle: "Hauptfunktionen",
+                feature1: "Metronom: uebliche Taktarten und BPM-Einstellungen fuer stabiles Timing.",
+                feature2: "Gitarren-Tuner: nutzt das Mikrofon fuer lokale Tonhoehen-Erkennung und Stimmhilfe.",
+                feature3: "Noten: Bilder importieren sowie in der App anzeigen und zoomen.",
+                feature4: "Uebungs-Audio: Schleife, Tempo und Tonart fuer Abschnittstraining.",
+                privacyTitle: "Datenschutz",
+                policyText: "Wir nehmen Datenschutz ernst. Vollstaendige Richtlinie:",
+                helpTitle: "Hilfe",
+                faqTitle: "FAQ",
+                faq1: "1. Kein Ton: bitte Medienlautstaerke und Stummschaltung pruefen.",
+                faq2: "2. Noten/Audio-Sync: iCloud anmelden und Sync in der App aktivieren.",
+                faq3: "3. Abo/Wiederherstellung: in der App unter Mitgliedschaft verwalten.",
+                faq4: "4. Tuner: Mikrofonberechtigung erlauben und einzelne Saite in ruhiger Umgebung anschlagen.",
+                contactLabel: "Kontakt-E-Mail:"
+            },
+            ru: {
+                title: "乐器助手 TempoMate",
+                subtitle: "iOS-приложение для практики: метроном, тюнер, партитуры и тренировочное аудио в одном процессе.",
+                downloadBtn: "Скачать приложение",
+                feedbackBtn: "Обратная связь",
+                privacyBtn: "Конфиденциальность",
+                helpBtn: "Помощь",
+                featuresTitle: "Основные функции",
+                feature1: "Метроном: популярные размеры и BPM для стабильного ритма.",
+                feature2: "Тюнер гитары: определение высоты тона через микрофон на устройстве.",
+                feature3: "Партитуры: импорт изображений, просмотр и масштабирование.",
+                feature4: "Тренировочное аудио: цикл, изменение темпа и тональности.",
+                privacyTitle: "Политика конфиденциальности",
+                policyText: "Мы ценим вашу конфиденциальность. Полный текст:",
+                helpTitle: "Поддержка",
+                faqTitle: "Частые вопросы",
+                faq1: "1. Нет звука: проверьте громкость медиа и режим без звука.",
+                faq2: "2. Синхронизация: войдите в iCloud и включите синхронизацию в приложении.",
+                faq3: "3. Подписка: управление и восстановление покупок внутри приложения.",
+                faq4: "4. Тюнер: разрешите доступ к микрофону и играйте по одной струне в тишине.",
+                contactLabel: "Email для связи:"
+            },
+            fr: {
+                title: "乐器助手 TempoMate",
+                subtitle: "Un outil iOS pour la pratique quotidienne: metronome, accordeur, partitions et audio d'exercice.",
+                downloadBtn: "Telecharger l'app",
+                feedbackBtn: "Retour e-mail",
+                privacyBtn: "Confidentialite",
+                helpBtn: "Aide",
+                featuresTitle: "Fonctions principales",
+                feature1: "Metronome: signatures rythmiques et BPM courants.",
+                feature2: "Accordeur guitare: detection de hauteur via microphone, en local.",
+                feature3: "Partitions: importer des images et zoomer dans l'application.",
+                feature4: "Audio d'exercice: boucle, vitesse et tonalite ajustables.",
+                privacyTitle: "Politique de confidentialite",
+                policyText: "Nous respectons votre vie privee. Politique complete:",
+                helpTitle: "Support",
+                faqTitle: "FAQ",
+                faq1: "1. Pas de son: verifiez volume media et mode silencieux.",
+                faq2: "2. Sync partition/audio: connectez iCloud et activez la synchronisation.",
+                faq3: "3. Abonnement: gerer/restaurer les achats depuis l'app.",
+                faq4: "4. Accordeur: autorisez le micro et jouez corde par corde en environnement calme.",
+                contactLabel: "E-mail de contact:"
+            },
+            ko: {
+                title: "乐器助手 TempoMate",
+                subtitle: "메트로놈, 튜너, 악보, 연습 오디오를 하나로 묶은 iOS 연습 도구입니다.",
+                downloadBtn: "앱 다운로드",
+                feedbackBtn: "이메일 문의",
+                privacyBtn: "개인정보 처리방침",
+                helpBtn: "도움말",
+                featuresTitle: "핵심 기능",
+                feature1: "메트로놈: 자주 쓰는 박자와 BPM 설정을 지원합니다.",
+                feature2: "기타 튜너: 마이크로 음정을 감지해 기기에서 바로 튜닝합니다.",
+                feature3: "악보: 이미지 가져오기, 앱 내 보기 및 확대/축소.",
+                feature4: "연습 오디오: 구간 반복, 속도/키 조절 지원.",
+                privacyTitle: "개인정보 처리방침",
+                policyText: "개인정보를 소중히 보호합니다. 전체 정책:",
+                helpTitle: "도움말 및 지원",
+                faqTitle: "자주 묻는 질문",
+                faq1: "1. 소리가 안 나요: 미디어 볼륨과 무음 상태를 확인하세요.",
+                faq2: "2. 동기화: iCloud 로그인 후 앱에서 동기화를 켜세요.",
+                faq3: "3. 구독/복원: 앱 내 멤버십 메뉴에서 관리하세요.",
+                faq4: "4. 튜너: 마이크 권한을 허용하고 조용한 환경에서 한 줄씩 연주하세요.",
+                contactLabel: "문의 이메일:"
+            },
+            pt: {
+                title: "乐器助手 TempoMate",
+                subtitle: "Ferramenta iOS para pratica diaria com metronomo, afinador, partituras e audio de treino.",
+                downloadBtn: "Baixar app",
+                feedbackBtn: "Feedback por e-mail",
+                privacyBtn: "Privacidade",
+                helpBtn: "Ajuda",
+                featuresTitle: "Recursos principais",
+                feature1: "Metronomo: compassos e BPM comuns para manter o ritmo.",
+                feature2: "Afinador de guitarra: deteccao de tom via microfone no dispositivo.",
+                feature3: "Partituras: importar imagens e ampliar no app.",
+                feature4: "Audio de treino: loop, velocidade e tonalidade ajustaveis.",
+                privacyTitle: "Politica de privacidade",
+                policyText: "Levamos sua privacidade a serio. Politica completa:",
+                helpTitle: "Ajuda e suporte",
+                faqTitle: "Perguntas frequentes",
+                faq1: "1. Sem som: verifique volume de midia e modo silencioso.",
+                faq2: "2. Sincronizacao: faca login no iCloud e ative no app.",
+                faq3: "3. Assinatura/restaurar: gerencie na area de assinatura do app.",
+                faq4: "4. Afinador: permita o microfone e toque corda por corda em local silencioso.",
+                contactLabel: "E-mail de contato:"
+            },
+            ja: {
+                title: "乐器助手 TempoMate",
+                subtitle: "メトロノーム、チューナー、譜面、練習オーディオを一体化したiOS練習ツールです。",
+                downloadBtn: "アプリをダウンロード",
+                feedbackBtn: "メールで問い合わせ",
+                privacyBtn: "プライバシー",
+                helpBtn: "サポート",
+                featuresTitle: "主な機能",
+                feature1: "メトロノーム: よく使う拍子とBPM設定に対応。",
+                feature2: "ギターチューナー: マイク入力で音程を端末内で判定。",
+                feature3: "譜面: 画像を取り込み、アプリ内で表示・拡大。",
+                feature4: "練習オーディオ: ループ、速度変更、キー変更に対応。",
+                privacyTitle: "プライバシーポリシー",
+                policyText: "プライバシーを重視しています。全文はこちら:",
+                helpTitle: "ヘルプ",
+                faqTitle: "よくある質問",
+                faq1: "1. 音が出ない: メディア音量と消音状態を確認してください。",
+                faq2: "2. 同期: iCloudにサインインし、アプリ内で同期を有効化。",
+                faq3: "3. 購読/復元: アプリ内の会員メニューで管理。",
+                faq4: "4. チューナー: マイク権限を許可し、静かな場所で1弦ずつ弾いてください。",
+                contactLabel: "連絡先メール:"
+            },
+            tr: {
+                title: "乐器助手 TempoMate",
+                subtitle: "Metronom, tuner, nota ve pratik sesini tek akista sunan iOS egzersiz araci.",
+                downloadBtn: "Uygulamayi indir",
+                feedbackBtn: "E-posta geri bildirim",
+                privacyBtn: "Gizlilik",
+                helpBtn: "Yardim",
+                featuresTitle: "Temel ozellikler",
+                feature1: "Metronom: yaygin olcu ve BPM ayarlari.",
+                feature2: "Gitar tuneri: mikrofonla yerel perde algilama ve akort geri bildirimi.",
+                feature3: "Nota: resim ice aktar, uygulamada goruntule ve yakinlastir.",
+                feature4: "Pratik sesi: dongu, hiz ve tonalite degistirme.",
+                privacyTitle: "Gizlilik Politikasi",
+                policyText: "Gizliliginize onem veriyoruz. Tam politika:",
+                helpTitle: "Yardim ve destek",
+                faqTitle: "Sik sorulan sorular",
+                faq1: "1. Ses yok: medya sesi ve sessiz modunu kontrol edin.",
+                faq2: "2. Senkronizasyon: iCloud girisi yapin ve uygulamada acin.",
+                faq3: "3. Abonelik/geri yukleme: uygulama icinden yonetin.",
+                faq4: "4. Tuner: mikrofon izni verin, sakin ortamda telleri tek tek calin.",
+                contactLabel: "Iletisim e-postasi:"
+            },
+            es: {
+                title: "乐器助手 TempoMate",
+                subtitle: "Herramienta iOS de practica diaria con metronomo, afinador, partituras y audio.",
+                downloadBtn: "Descargar app",
+                feedbackBtn: "Comentarios por correo",
+                privacyBtn: "Privacidad",
+                helpBtn: "Ayuda",
+                featuresTitle: "Funciones principales",
+                feature1: "Metronomo: compases y BPM comunes para mantener el ritmo.",
+                feature2: "Afinador de guitarra: deteccion de tono por microfono en el dispositivo.",
+                feature3: "Partituras: importar imagenes, ver y hacer zoom en la app.",
+                feature4: "Audio de practica: bucle, cambio de velocidad y tonalidad.",
+                privacyTitle: "Politica de privacidad",
+                policyText: "Tu privacidad es importante. Politica completa:",
+                helpTitle: "Ayuda y soporte",
+                faqTitle: "Preguntas frecuentes",
+                faq1: "1. Sin sonido: revisa volumen multimedia y modo silencio.",
+                faq2: "2. Sincronizacion: inicia sesion en iCloud y activala en la app.",
+                faq3: "3. Suscripcion/restaurar: gestiona compras desde la app.",
+                faq4: "4. Afinador: permite microfono y toca cuerda por cuerda en un lugar silencioso.",
+                contactLabel: "Correo de contacto:"
+            },
+            it: {
+                title: "乐器助手 TempoMate",
+                subtitle: "Strumento iOS per pratica quotidiana con metronomo, accordatore, spartiti e audio.",
+                downloadBtn: "Scarica app",
+                feedbackBtn: "Feedback via email",
+                privacyBtn: "Privacy",
+                helpBtn: "Supporto",
+                featuresTitle: "Funzioni principali",
+                feature1: "Metronomo: tempi e BPM comuni per mantenere il ritmo.",
+                feature2: "Accordatore chitarra: rilevamento altezza tramite microfono in locale.",
+                feature3: "Spartiti: importa immagini, visualizza e zooma nell'app.",
+                feature4: "Audio di pratica: loop, variazione velocita e tonalita.",
+                privacyTitle: "Informativa sulla privacy",
+                policyText: "La tua privacy e importante. Informativa completa:",
+                helpTitle: "Aiuto e supporto",
+                faqTitle: "Domande frequenti",
+                faq1: "1. Nessun audio: controlla volume multimediale e silenzioso.",
+                faq2: "2. Sincronizzazione: accedi a iCloud e abilita la sync nell'app.",
+                faq3: "3. Abbonamento/ripristino: gestisci acquisti nell'app.",
+                faq4: "4. Accordatore: consenti microfono e suona una corda alla volta in ambiente silenzioso.",
+                contactLabel: "Email di contatto:"
+            }
+        };
 
         const img = document.getElementById("shotImage");
         const dotsWrap = document.getElementById("dots");
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
+        const langSelect = document.getElementById("langSelect");
         let index = 0;
         let timer = null;
+
+        function populateLanguageSelector() {
+            Object.entries(languages).forEach(([code, label]) => {
+                const option = document.createElement("option");
+                option.value = code;
+                option.textContent = label;
+                langSelect.appendChild(option);
+            });
+        }
+
+        function setText(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value;
+        }
+
+        function applyLanguage(lang) {
+            const t = messages[lang] || messages.zh;
+            document.documentElement.lang = lang;
+            setText("title", t.title);
+            setText("subtitle", t.subtitle);
+            setText("downloadBtn", t.downloadBtn);
+            setText("feedbackBtn", t.feedbackBtn);
+            setText("privacyBtn", t.privacyBtn);
+            setText("helpBtn", t.helpBtn);
+            setText("featuresTitle", t.featuresTitle);
+            setText("feature1", t.feature1);
+            setText("feature2", t.feature2);
+            setText("feature3", t.feature3);
+            setText("feature4", t.feature4);
+            setText("privacy-policy", t.privacyTitle);
+            setText("policyText", policyFullByLang[lang] || policyFullByLang.zh);
+            setText("help-support", t.helpTitle);
+            setText("faqTitle", t.faqTitle);
+            setText("faq1", t.faq1);
+            setText("faq2", t.faq2);
+            setText("faq3", t.faq3);
+            setText("faq4", t.faq4);
+            setText("contactLabel", t.contactLabel);
+            langSelect.value = lang;
+        }
+
+        function mapCountryToLanguage(countryCode) {
+            const cc = (countryCode || "").toUpperCase();
+            const map = {
+                DE: "de",
+                AT: "de",
+                CH: "de",
+                RU: "ru",
+                FR: "fr",
+                KR: "ko",
+                PT: "pt",
+                BR: "pt",
+                JP: "ja",
+                TR: "tr",
+                ES: "es",
+                MX: "es",
+                AR: "es",
+                CO: "es",
+                CL: "es",
+                IT: "it",
+                CN: "zh",
+                TW: "zh-TW",
+                HK: "zh-TW",
+                MO: "zh-TW",
+                US: "en",
+                GB: "en",
+                CA: "en",
+                AU: "en",
+                NZ: "en",
+                IE: "en"
+            };
+            return map[cc] || null;
+        }
+
+        async function getLanguageFromIP() {
+            try {
+                const res = await fetch("https://ipapi.co/json/");
+                if (!res.ok) return null;
+                const data = await res.json();
+                return mapCountryToLanguage(data.country_code);
+            } catch {
+                return null;
+            }
+        }
+
+        function getBrowserLanguage() {
+            const raw = (navigator.language || "zh").toLowerCase();
+            if (raw === "zh-tw" || raw === "zh-hk" || raw === "zh-mo") {
+                return "zh-TW";
+            }
+            const code = raw.split("-")[0];
+            return messages[code] ? code : "zh";
+        }
 
         function renderDots() {
             dotsWrap.innerHTML = "";
@@ -387,8 +1258,26 @@ Li Zhishuang (李志双) — 454203402@qq.com</div>
             restart();
         });
 
-        update();
-        start();
+        async function initPage() {
+            populateLanguageSelector();
+            document.getElementById("downloadBtn").href = appStoreUrl;
+
+            const saved = localStorage.getItem("preferredLang");
+            const ipLang = saved ? null : await getLanguageFromIP();
+            const defaultLang = saved || ipLang || getBrowserLanguage();
+            applyLanguage(defaultLang);
+
+            langSelect.addEventListener("change", (e) => {
+                const selected = e.target.value;
+                applyLanguage(selected);
+                localStorage.setItem("preferredLang", selected);
+            });
+
+            update();
+            start();
+        }
+
+        initPage();
     </script>
 </body>
 </html>
